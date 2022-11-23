@@ -14,9 +14,7 @@ describe("calculateTicketPrice()", () => {
         entrantType: "child",
         extras: [],
       };
-      const actual = calculateTicketPrice(tickets, ticketInfo);
-      const expected = "Ticket type 'incorrect-type' cannot be found.";
-      expect(actual).toEqual(expected);
+      expect(() => calculateTicketPrice(tickets, ticketInfo)).toThrow("Ticket type 'incorrect-type' cannot be found.");
     });
 
     test("entrant type does not match an existing entrant type", () => {
@@ -25,9 +23,8 @@ describe("calculateTicketPrice()", () => {
         entrantType: "incorrect-entrant",
         extras: [],
       };
-      const actual = calculateTicketPrice(tickets, ticketInfo);
-      const expected = "Entrant type 'incorrect-entrant' cannot be found.";
-      expect(actual).toEqual(expected);
+
+      expect(() => calculateTicketPrice(tickets, ticketInfo)).toThrow("Entrant type 'incorrect-entrant' cannot be found.");
     });
 
     test("extra type does not match an existing extra type", () => {
@@ -36,9 +33,8 @@ describe("calculateTicketPrice()", () => {
         entrantType: "adult",
         extras: ["incorrect-extra"],
       };
-      const actual = calculateTicketPrice(tickets, ticketInfo);
-      const expected = "Extra type 'incorrect-extra' cannot be found.";
-      expect(actual).toEqual(expected);
+
+      expect(() => calculateTicketPrice(tickets, ticketInfo)).toThrow("Extra type 'incorrect-extra' cannot be found.");
     });
   });
 
@@ -338,7 +334,8 @@ describe("purchaseTickets()", () => {
         entrantType: "child",
         extras: [],
       };
-      expect(purchaseTickets(tickets, [incorrectTicketType])).toEqual(
+
+      expect(() => purchaseTickets(tickets, [incorrectTicketType])).toThrow(
         "Ticket type 'incorrect-type' cannot be found."
       );
 
@@ -348,7 +345,8 @@ describe("purchaseTickets()", () => {
         entrantType: "incorrect-entrant",
         extras: [],
       };
-      expect(purchaseTickets(tickets, [incorrectEntrant])).toEqual(
+
+      expect(() => purchaseTickets(tickets, [incorrectEntrant])).toThrow(
         "Entrant type 'incorrect-entrant' cannot be found."
       );
 
@@ -358,7 +356,8 @@ describe("purchaseTickets()", () => {
         entrantType: "adult",
         extras: ["incorrect-extra"],
       };
-      expect(purchaseTickets(tickets, [incorrectAddOn])).toEqual(
+
+      expect(() => purchaseTickets(tickets, [incorrectAddOn])).toThrow(
         "Extra type 'incorrect-extra' cannot be found."
       );
     });

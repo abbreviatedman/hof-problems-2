@@ -69,11 +69,9 @@ describe("getDinosaurDescription()", () => {
     expect(actual).toEqual(expected);
   });
 
-  test("should return an error message if the dinosaur cannot be found", () => {
+  test("should throw an error message if the dinosaur cannot be found", () => {
     const id = "incorrect-id";
-    const actual = getDinosaurDescription(dinosaurs, id);
-    const expected = `A dinosaur with an ID of 'incorrect-id' cannot be found.`;
-    expect(actual).toEqual(expected);
+    expect(() => getDinosaurDescription(dinosaurs, id)).toThrow(`A dinosaur with an ID of 'incorrect-id' cannot be found.`);
   });
 
   test("should not mutate the original dinosaurs array", () => {

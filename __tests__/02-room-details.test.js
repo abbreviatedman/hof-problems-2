@@ -25,14 +25,12 @@ describe("getRoomByDinosaurName()", () => {
     );
   });
 
-  test("should return an error message if the dinosaur cannot be found at all", () => {
+  test("should throw an error message if the dinosaur cannot be found at all", () => {
     const name = "Pterodactyl";
-    const actual = getRoomByDinosaurName(dinosaurs, rooms, name);
-    const expected = `Dinosaur with name 'Pterodactyl' cannot be found.`;
-    expect(actual).toEqual(expected);
+    expect(() => getRoomByDinosaurName(dinosaurs, rooms, name)).toThrow(`Dinosaur with name 'Pterodactyl' cannot be found.`);
   });
 
-  test("should return an error message if the dinosaur cannot be found in any room", () => {
+  test("should throw an error message if the dinosaur cannot be found in any room", () => {
     const input = [
       {
         roomId: "xwG7O4wQl",
@@ -46,9 +44,7 @@ describe("getRoomByDinosaurName()", () => {
       },
     ];
     const name = "Tyrannosaurus";
-    const actual = getRoomByDinosaurName(dinosaurs, input, name);
-    const expected = `Dinosaur with name 'Tyrannosaurus' cannot be found in any rooms.`;
-    expect(actual).toEqual(expected);
+    expect(() => getRoomByDinosaurName(dinosaurs, input, name)).toThrow(`Dinosaur with name 'Tyrannosaurus' cannot be found in any rooms.`)
   });
 });
 
@@ -75,14 +71,12 @@ describe("getConnectedRoomNamesById()", () => {
     ).toEqual(["Reyes Hall"]);
   });
 
-  test("if initial room ID is incorrect, should return an error message", () => {
+  test("if initial room ID is incorrect, should throw an error message", () => {
     const id = "incorrect-id";
-    const actual = getConnectedRoomNamesById(rooms, id);
-    const expected = `Room with ID of '${id}' could not be found.`;
-    expect(actual).toEqual(expected);
+    expect(() => getConnectedRoomNamesById(rooms, id)).toThrow(`Room with ID of '${id}' could not be found.`);
   });
 
-  test("if connected room ID is incorrect, should return an error message", () => {
+  test("if connected room ID is incorrect, should throw an error message", () => {
     const input = [
       {
         roomId: "xwG7O4wQl",
@@ -115,8 +109,6 @@ describe("getConnectedRoomNamesById()", () => {
       },
     ];
     const id = "xwG7O4wQl";
-    const actual = getConnectedRoomNamesById(input, id);
-    const expected = `Room with ID of 'incorrect-id' could not be found.`;
-    expect(actual).toEqual(expected);
+    expect(() => getConnectedRoomNamesById(input, id)).toThrow(`Room with ID of 'incorrect-id' could not be found.`);
   });
 });
