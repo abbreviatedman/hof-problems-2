@@ -8,6 +8,7 @@
 const exampleTicketData = require("../data/tickets");
 // Do not change the line above.
 
+// Suggested array methods: `reduce` and `find`.
 /**
  * calculateTicketPrice()
  * ---------------------
@@ -54,7 +55,32 @@ const exampleTicketData = require("../data/tickets");
     calculateTicketPrice(tickets, ticketInfo);
     //> "Entrant type 'kid' cannot be found."
  */
-function calculateTicketPrice(ticketData, ticketInfo) {}
+function calculateTicketPrice(ticketData, { ticketType, entrantType, extras }) {
+  if (Object.keys(ticketData).includes(ticketType) === false) {
+    throw `Ticket type '${ticketType}' cannot be found.`;
+  }
+
+  if (!Object.keys(ticketData[ticketType].priceInCents).includes(entrantType)) {
+    throw `Entrant type '${entrantType}' cannot be found.`;
+  }
+
+  const incorrectExtra = extras.find(
+    (extra) => !Object.keys(ticketData.extras).includes(extra)
+  );
+
+  if (incorrectExtra) {
+    throw `Extra type '${incorrectExtra}' cannot be found.`;
+  }
+
+  return (
+    ticketData[ticketType].priceInCents[entrantType] +
+    extras.reduce(
+      (total, extra) =>
+        total + ticketData.extras[extra].priceInCents[entrantType],
+      0
+    )
+  );
+}
 
 /**
  * purchaseTickets()
@@ -109,7 +135,47 @@ function calculateTicketPrice(ticketData, ticketInfo) {}
     purchaseTickets(tickets, purchases);
     //> "Ticket type 'discount' cannot be found."
  */
-function purchaseTickets(ticketData, purchases) {}
+function purchaseTickets(ticketData, purchases) {
+  return (
+    `Thank you for visiting the Dinosaur Museum!` +
+    "\n-------------------------------------------\n" +
+    purchases
+      .map((purchase) => {
+        const { ticketType, entrantType, extras } = purchase;
+        let price = 0;
+        try {
+          price = calculateTicketPrice(ticketData, purchase);
+        } catch (error) {
+          throw error;
+        }
+
+        return (
+          entrantType[0].toUpperCase() +
+          entrantType.slice(1) +
+          " " +
+          ticketData[ticketType].description +
+          ": " +
+          `$${(price / 100).toFixed(2)}` +
+          (!extras.length
+            ? ""
+            : " (" +
+              extras
+                .map((extra) => ticketData.extras[extra].description)
+                .join(", ") +
+              ")")
+        );
+      })
+      .join("\n") +
+    "\n-------------------------------------------\nTOTAL: $" +
+    purchases
+      .reduce(
+        (total, purchase) =>
+          total + calculateTicketPrice(ticketData, purchase) / 100,
+        0
+      )
+      .toFixed(2)
+  );
+}
 
 // Do not change anything below this line.
 module.exports = {
