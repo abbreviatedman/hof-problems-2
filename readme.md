@@ -1,6 +1,61 @@
 # Higher Order Native Array Methods - Optional Practice Exercise 
 
-This repo is a combination of the problems from the Accumulator Lab and the Dinosaur Museum Project, intended to e solved using `.map`, `.filter`, and `.find`.
+This repo is a combination and evolution of the problems from the Accumulator Lab and the Dinosaur Museum Project, intended to be solved using our new tools:
+
+- Error handling using`throw`, `try`, and `catch`.
+- Higher Order Array Methods, particularly `.map`, `.filter`, `.find`, and .`reduce`.
+
+**See the below notes for some important tips if you get stuck.**
+
+## Tips
+
+### Accumulator Lab Problems
+
+These are fairly straightforward now that you're using higher order functions. They also have no error handling requirements. Consider them a warmup.
+
+No tips!
+
+### Dinosaur Facts
+
+##### `getLongestDinosaur`
+
+This one is best solved with a `.reduce`—if you're not fully confident with `reduce`, save this one for last.
+
+##### `getDinosaurDescription`
+
+This is a good one to start with!
+
+- It can utilize the `.find` method.
+- You are also being asked to `throw` an error, here.
+
+##### `getDinosaursAliveMya`
+
+This one can be solved using a `.map` and a `.filter`.
+
+### Room Details
+
+##### `getRoomByDinosaurName`
+
+- We suggest you use `.find` to solve this problem.
+- You'll need to `throw` some errors as well.
+
+##### `getConnectedRoomNamesById`
+
+- We suggest you use `.find` and `.map`.
+- You'll need to `throw` some errors here.
+
+### Ticket Calculator
+
+##### `calculateTicketPrice`
+
+- This one can be solved a few ways, but we would suggest `.find` can be helpful, and a `.reduce` can help with calculating the total from the ticket's `extras` array—or an old-fashioned accumulator pattern loop if you're not comfortable with `.reduce`.
+- `Object.keys` may be helpful with the error handling as well.
+
+##### `purchaseTickets`
+
+- The error handling for this one is a bit different. You're still being asked to `throw`, but the errors will come from `calculatePrice`, so you'll need a `try`/`catch` block.
+- There are multiple ways to solve this one, but we'd suggest that `.map` and `.join` can be helpful, as well as `.reduce`.
+
 
 ## Project setup
 
