@@ -23,7 +23,6 @@ const exampleDinosaurData = require("../data/dinosaurs");
  *  //> { Brachiosaurus: 98.43 }
  */
 
-// Suggested array method: `reduce`
 function getLongestDinosaur(dinosaurs) {
   let maxLength = 0;
 
@@ -39,7 +38,6 @@ function getLongestDinosaur(dinosaurs) {
   }, {});
 }
 
-// Suggested array method: `find`
 /**
  * getDinosaurDescription()
  * ---------------------
@@ -76,7 +74,6 @@ ${dinosaur.info} It lived in the ${dinosaur.period} period, over ${
   } million years ago.`;
 };
 
-// Suggested array methods: `filter` and `map`
 /**
  * getDinosaursAliveMya()
  * ---------------------

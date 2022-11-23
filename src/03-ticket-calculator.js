@@ -8,7 +8,6 @@
 const exampleTicketData = require("../data/tickets");
 // Do not change the line above.
 
-// Suggested array methods: `reduce` and `find`.
 /**
  * calculateTicketPrice()
  * ---------------------
