@@ -1,14 +1,6 @@
-# Dinosaur Museum Project
+# Higher Order Native Array Methods - Optional Practice Exercise 
 
-The _Dinosaur Museum_ is opening! You've been tasked with building some challenging functionality for the automated systems recently installed at the museum.
-
-To complete this project, you will need to write several difficult functions that will support attendees in finding out information about dinosaurs, finding the dinosaur's location, and calculating their entry fees.
-
-51 unit tests need to pass. Each passing test will be worth 1 point.
-
-A minimum of 36 points must be attained to pass this assessment.
-
-There is no partial credit for the tests.
+This repo is a combination of the problems from the Accumulator Lab and the Dinosaur Museum Project, intended to e solved using `.map`, `.filter`, and `.find`.
 
 ## Project setup
 
