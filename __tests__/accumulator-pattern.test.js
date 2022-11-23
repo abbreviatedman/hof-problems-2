@@ -3,7 +3,7 @@ const {
   findValue,
   filterOutLowValues,
   getRollCounts,
-} = require("../");
+} = require("../src/accumulator-pattern");
 
 describe("isValid()", () => {
   test("should return true if an empty array is given", () => {
