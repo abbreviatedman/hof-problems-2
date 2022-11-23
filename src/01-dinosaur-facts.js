@@ -58,12 +58,8 @@ function getLongestDinosaur(dinosaurs) {
  *  getDinosaurDescription(dinosaurs, "incorrect-id");
  *  //> "A dinosaur with an ID of 'incorrect-id' cannot be found."
  */
-const getDinosaurById = (dinosaurs, id) => {
-  return dinosaurs.find((dinosaur) => dinosaur.dinosaurId === id);
-};
-
 const getDinosaurDescription = (dinosaurs, id) => {
-  const dinosaur = getDinosaurById(dinosaurs, id);
+  const dinosaur = dinosaurs.find((dinosaur) => dinosaur.dinosaurId === id);
   if (!dinosaur) {
     throw `A dinosaur with an ID of '${id}' cannot be found.`;
   }
